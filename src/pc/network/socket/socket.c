@@ -70,6 +70,11 @@ static bool ns_socket_initialize(enum NetworkType networkType) {
         LOG_INFO("connecting to %s %u", configJoinIp, port);
     }
 
+    // kick off first packet
+    if (gNetworkType == NT_CLIENT) {
+        network_on_joined();
+    }
+
     LOG_INFO("initialized");
 
     // success
